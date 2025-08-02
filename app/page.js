@@ -1,103 +1,99 @@
-import Image from "next/image";
+"use client";
+
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
+import { ModeToggle } from "@/components/mode-toggle";
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <main className="h-screen w-screen flex flex-col justify-center items-center px-4 py-8 bg-gradient-to-br from-background to-muted text-foreground transition">
+      <section className="max-w-5xl mx-auto text-center">
+        <div className="flex justify-end mb-4">
+          <ModeToggle />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+
+        <motion.h1
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-5xl sm:text-6xl font-bold bg-gradient-to-r from-green-400 via-blue-400 to-teal-400 text-transparent bg-clip-text"
         >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+          Indian Stock Market Visualizer
+        </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4, duration: 0.8 }}
+          className="mt-6 text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto"
         >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+          Explore historical trends of Indian stock indices with interactive
+          charts powered by clean CSV data. Built with Next.js, Chart.js, and
+          love.
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.8, duration: 0.5 }}
+          className="mt-10"
         >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+          <Link href="/stocks">
+            <Button className="text-lg px-8 py-4 rounded-full bg-green-600 hover:bg-green-700 shadow-lg transition">
+              View Stocks →
+            </Button>
+          </Link>
+        </motion.div>
+      </section>
+
+      <section className="mt-24 max-w-4xl mx-auto px-4">
+        <h2 className="text-3xl sm:text-4xl font-bold mb-10 text-center text-green-400">
+          📊 Key Features
+        </h2>
+        <div className="grid sm:grid-cols-2 gap-8">
+          {features.map((f, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 * index }}
+            >
+              <FeatureBox title={f.title} desc={f.desc} />
+            </motion.div>
+          ))}
+        </div>
+      </section>
+    </main>
+  );
+}
+
+const features = [
+  {
+    title: "📁 CSV-Based Data",
+    desc: "Load stock market data directly from CSV for fast, reliable access without API calls.",
+  },
+  {
+    title: "📈 Interactive Charts",
+    desc: "Visualize closing index values over time with dynamic, responsive line graphs.",
+  },
+  {
+    title: "🏢 Company-Wise Filtering",
+    desc: "Easily switch between different stock indices to get instant insights.",
+  },
+  {
+    title: "⚙️ Built with Next.js",
+    desc: "Optimized for performance with SSR, modular styling, and easy routing.",
+  },
+];
+
+function FeatureBox({ title, desc }) {
+  return (
+    <div className="group relative p-[2px] rounded-xl bg-gradient-to-r from-green-500 via-blue-500 to-teal-400 hover:shadow-lg transition duration-300">
+      <div className="h-full w-full bg-background p-6 rounded-[10px] group-hover:bg-muted transition duration-300">
+        <h3 className="text-xl font-bold mb-3">{title}</h3>
+        <p className="text-muted-foreground leading-relaxed text-sm">{desc}</p>
+      </div>
     </div>
   );
 }
